@@ -4,7 +4,7 @@ CFLAGS = -Wall -std=c++11
 LDFLAGS = -lrt
 OBJECTS = main.o Armor.o Container.o Campaign.o Character.o Helper.o Item.o
 #replace this if you want to change the output name
-TARGET = test
+TARGET = test.out
 
 #default is to compile
 default: compile
