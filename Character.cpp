@@ -184,7 +184,7 @@ void Character::setRace(const Race r) {
 	switch (r) {
 	case dwarf:
 		size = "Medium";
-		//cout << "1. Hill Dwarf /n2. Mountain Dwarf"; // FIXME?
+		//cout << "1. Hill Dwarf /n2. Mountain Dwarf"; // FIXME? Should this be an input... in the set?
 		speed = 25; //note that this is not reduced when dwarves wear heavy armor
 		charAbils.con += 2; //increase con by 2
 		break;
