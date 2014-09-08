@@ -1,0 +1,33 @@
+string tempCha, tempIt;
+cout << endl << "---Characters---" << endl;
+Character::printCharNames(thisGame.charList);
+cout << endl << "Who do you want to give the item to? ";
+getline(cin, tempCha);
+std::vector<Armor>::iterator it2 = thisGame.armorList.begin();
+bool added = false;
+for (int x = 0; x < thisGame.charList.size(); x++) { //make sure character exists
+	if (it->getName() == tempCha) {
+		cout << "Found " << tempCha << "." << endl << endl << "---Item List---" << endl;
+		Character::printArmor(armorList);
+		cout << endl << "What item do you want to give?" << endl;
+		getline(cin,tempIt);
+		cout << endl;
+		for (int y = 0; y < armorList.size(); y++) { // make sure item exists
+			if (it2->getName() == tempIt) {
+				it->backpack.addItem(*it2);	
+				cout << "Found " << tempIt << ". Added to " << tempCha << "." << endl;
+				added = true;
+				break; // for(y)
+			}
+			it2++;
+		}
+		if (added) {
+			break; // for(x)
+		}
+		cout << "Could not find " << tempIt << endl;
+	}
+	it++;
+}
+if (!added) {
+	cout << "Could not find " << tempCha << endl;
+}

@@ -1,0 +1,120 @@
+#ifndef CHARACTER_H
+#define CHARACTER_H
+#include "Item.h"
+#include "Armor.h"
+#include "Container.h"
+
+using namespace std;
+
+enum Class {
+	cleric, fighter, rogue, wizard
+};
+
+enum Race {
+	dwarf, elf, halfling, human
+};
+
+enum Align {
+	NeutralGood, NeutralEvil, TrueNeutral, ChaoticGood, ChaoticEvil,
+	ChaoticNeutral, LawfulGood, LawfulEvil, LawfulNeutral
+};
+
+struct Abilities {
+	int str, dex, con, intl, wis, cha;
+};
+
+struct AbilMods {
+	int str, dex, con, intl, wis, cha;
+};
+
+
+enum DivineDomain {
+	Knowledge, Life, Light, Nature, Tempest, Trickery, War
+};
+
+
+class Character {
+	//single word pre-determined strings that can
+	//be represented with a struct
+	private:
+		Class charClass;
+		Race charRace;
+		Align charAlign;
+		Abilities charAbils;
+		AbilMods mods;
+		DivineDomain domain;
+
+		//these two are an array of these stats in this order.
+		//Maybe make them pairs so that you have the number and string
+		//matching the stat abbreviation?
+
+		//simple values represented by an int
+		int proficiencyBonus;
+		int inspiration; //What is inspiration? Is it background? i.e. criminal, folk hero
+		int level, exp; //Add subtract exp/lv function?
+		int AC; //armor class
+		int initiative;
+		int speed;
+		int hitDie, hp;
+		string name;
+		string deity;
+		string size;
+		int height, weight, age;
+		int spellslots, cantrips, spellsknown;
+
+		void setClass(Class); //Sets the class of the character and hit die
+		void setRace(Race); //Adds bonuses to stats based on race, sets speed, height weight age etc.
+		
+		void genAbilities(int*) const;
+		void setAbilitiesHelper(const int *);
+
+	public:
+		Character();
+		Character(string name);
+
+		void setAlign(Align);
+		Class getClass() const;
+		Race getRace() const;
+		Align getAlign() const;
+		int getHitDie() const;
+		string getName() const;
+		string getAbility(int) const;
+		void setAbilities();
+		void printAbilities() const;
+		void printCharacter() const;
+		string printRace(bool cap = false) const;
+		string printClass(bool cap = false) const;
+		string printAlign(bool cap = false) const;
+		void calcMods();
+		void selRace();
+		void selClass();
+		void selAlign();
+		void selName();
+		Container backpack = Container("Backpack");
+		Container equipped = Container("Equipped");
+		static void printArmor(const vector<Armor>&); // Should this be in Character?
+		static void printCharNames(const vector<Character>&);
+};
+
+//STUBBED FOR COMPILING PURPOSES//
+/*//all of these will need their own objects--structs or classes
+//Function to reroll scores. every time a score is rerolled, a point is taken from the skill of their choice
+Effect effects[]; //for anything affecting the player
+Item inventory[]; //this in particular will need an array of items to create the inventory
+Skill skills[18]; //this is a set list of skills that can be done as a pair--(string,int)
+Proficiency prof [];
+Language lang []; //this can be done either by simply adding a string or as a pair
+//if it's a pair, we would have a list of possible languages and a boolean for knowledge of it
+Trait traits[];
+Personality persTraits [];
+Ideal ideals [];
+Bond bonds [];
+Flaw flaws [];
+Attack attacklist[];
+Spell spelllist[]; //perhaps for spell list, we could import/input a list of spells
+//then create a search function to let the player select spells
+//if we want to be extra special, create a prereq variable that checks to see if you can actually have the spell
+*/
+//END STUBBED//
+
+#endif // CHARACTER_H

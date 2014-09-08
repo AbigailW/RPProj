@@ -1,0 +1,16 @@
+Idea for the dice rolling:
+
+You were curious about potentially allowing the user to enter in their own ability scores...
+We COULD just roll them and allow the user to enter a score into each ability--it's up to them
+to either enter what was rolled or a different number. Kind of like an override..
+
+So we have two options. We can:
+1. Allow an override sort of thing, where everything that is random in a character
+can be manually entered during the creation process
+OR
+2. Give the user a choice at the beginning. This would keep random characters accountable. 
+
+Also, for entering these scores, we may want to make an "optimize" button that would 
+give the best configuration of ability scores per class the user selected
+(This would work by giving each class a list of most important to least important 
+and then enter the scores from there.)
