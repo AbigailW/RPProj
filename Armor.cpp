@@ -79,3 +79,13 @@ void Armor::printArmor(const vector<Armor>& container) {
 		it++;
 	}
 }
+
+bool Armor::operator==(const Armor& oth) const {
+	if ((Item) *this == (Item) oth) {
+		return (this->armorWeight == oth.armorWeight
+				&& this->armorStealth == oth.armorStealth
+				&& this->AC == oth.AC
+				&& this->strReq == oth.strReq);
+	}
+	return false;
+}
