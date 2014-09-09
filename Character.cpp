@@ -371,12 +371,12 @@ string Character::getAbility(const int num) const {
 }
 
 void Character::printAbilities() const {
-	cout << "Str: " << charAbils.str << " (" << mods.str << ")"
-		<< "		Dex: " << charAbils.dex << " (" << mods.dex << ")"
-		<< "		Con: " << charAbils.con << " (" << mods.con << ")" << endl;
-	cout << "Int: " << charAbils.intl << " (" << mods.intl << ")"
-		<< "		Wis: " << charAbils.wis << " (" << mods.wis << ")"
-		<< "		Cha: " << charAbils.cha << " (" << mods.cha << ")" << endl;
+	cout << "Str: " << getStat(str) << " (" << mods.str << ")"
+		<< "		Dex: " << getStat(dex) << " (" << mods.dex << ")"
+		<< "		Con: " << getStat(con) << " (" << mods.con << ")" << endl;
+	cout << "Int: " << getStat(intl) << " (" << mods.intl << ")"
+		<< "		Wis: " << getStat(wis) << " (" << mods.wis << ")"
+		<< "		Cha: " << getStat(cha) << " (" << mods.cha << ")" << endl;
 }
 
 void Character::printCharacter() const {
@@ -430,4 +430,20 @@ void Character::printCharNames(const vector<Character>& charList) {
 		cout << it->getName() << endl;
 		it++;
 	}
+}
+
+int Character::getStat(const AbilTypes abil) const {
+	// Initialize the sum to the base value
+	int sum = ((int *) &charAbils.str)[(int) abil];
+
+	// If nothing is equipped we don't need to check
+	if (equipped.items.size() < 1) {
+		return sum;
+	}
+
+	// Add up all item bonuses that apply to the desired stat
+	for (auto it : equipped.items) {
+		sum += it.getBonus(abil);
+	}
+	return sum;
 }

@@ -64,6 +64,7 @@ class Character {
 		Container backpack = Container("Backpack");
 		Container equipped = Container("Equipped");
 		static void printCharNames(const std::vector<Character>&);
+		int getStat(AbilTypes) const;
 };
 
 //STUBBED FOR COMPILING PURPOSES//
