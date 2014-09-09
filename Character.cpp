@@ -425,10 +425,8 @@ void Character::selName() {
 }
 
 void Character::printCharNames(const vector<Character>& charList) {
-	vector<Character>::const_iterator it = charList.begin();
-	for (int i = 0; i < charList.size(); i++) {
-		cout << it->getName() << endl;
-		it++;
+	for (auto const it: charList) {
+		cout << it.getName() << endl;
 	}
 }
 
@@ -442,7 +440,7 @@ int Character::getStat(const AbilTypes abil) const {
 	}
 
 	// Add up all item bonuses that apply to the desired stat
-	for (auto it : equipped.items) {
+	for (auto const it : equipped.items) {
 		sum += it.getBonus(abil);
 	}
 	return sum;
