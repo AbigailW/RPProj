@@ -68,7 +68,7 @@ int main() {
 				getline(cin, tempNam);
 				if (thisGame.getCharacter(tempNam)) {
 					cout << endl << "---Item List---" << endl;
-					Character::printArmor(thisGame.armorList);
+					Armor::printArmor(thisGame.armorList);
 					cout << endl << "Which item?" << endl;
 					getline(cin, tempItem);
 					if (thisGame.getItem(tempItem)) {

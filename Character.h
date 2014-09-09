@@ -5,10 +5,6 @@
 #include "Container.h"
 #include "DataTypes.h"
 
-struct Abilities {
-	int str, dex, con, intl, wis, cha;
-};
-
 class Character {
 	//single word pre-determined strings that can
 	//be represented with a struct
@@ -68,7 +64,6 @@ class Character {
 		void selName();
 		Container backpack = Container("Backpack");
 		Container equipped = Container("Equipped");
-		static void printArmor(const std::vector<Armor>&); // Should this be in Character?
 		static void printCharNames(const std::vector<Character>&);
 };
 

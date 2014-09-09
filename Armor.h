@@ -20,6 +20,7 @@ class Armor: public Item {
 		}
 		std::string printArmorWeight(bool cap = false) const;
 		std::string printStealth(bool cap = false) const;
+		static void printArmor(const std::vector<Armor>&);
 		void printInfo() const;
 	private:
 		Weight armorWeight;

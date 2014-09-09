@@ -435,14 +435,6 @@ void Character::selName() {
 	getline(cin, name);
 }
 
-void Character::printArmor(const vector<Armor>& container) {
-	vector<Armor>::const_iterator it = container.begin();
-	for (int x = 0; x < container.size(); x++) {
-		cout << it->getName() << endl;
-		it++;
-	}
-}
-
 void Character::printCharNames(const vector<Character>& charList) {
 	vector<Character>::const_iterator it = charList.begin();
 	for (int i = 0; i < charList.size(); i++) {
