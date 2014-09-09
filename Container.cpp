@@ -36,7 +36,7 @@ Item * Container::searchContainer(string name) {
 bool Container::removeItem(Item i) {
 	std::vector<Item>::iterator it = items.begin();
 	for (int x = 0; x < items.size(); x++) {
-		if (it->getName() == i.getName()) {
+		if (*it == i) {
 			items.erase(it);
 			return true;
 		}
@@ -48,9 +48,8 @@ bool Container::removeItem(Item i) {
 bool Container::moveItem(Item i, Container* b) {
 	std::vector<Item>::iterator it = items.begin();
 	for (int x = 0; x < items.size(); x++) {
-		//if (it->getName() == i.getName()) {
 		if (*it == i) {
-			b->addItem(i);
+			b->addItem(*it);
 			items.erase(it);
 			return true;
 		}
