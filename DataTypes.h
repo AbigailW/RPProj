@@ -31,8 +31,6 @@ enum DivineDomain {
 struct AbilBonus {
 	AbilTypes abil;
 	int bonus;
-	std::string name;
-	std::string desc;
 };
 
 // Armor
