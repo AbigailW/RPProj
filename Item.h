@@ -8,7 +8,7 @@ class Item {
 	public:
 		Item();
 		Item(std::string nam);
-		Item(std::string n, std::string des, std::string loc, double w);
+		Item(std::string n, std::string des, double w);
 		int getWeight() const;
 		std::string getName() const;
 		std::string getDescription() const;

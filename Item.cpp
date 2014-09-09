@@ -34,7 +34,7 @@ Item::Item(const string nam){
 	weight = 2500;
 }
 
-Item::Item(const string n, const string des, const string loc, const double w) {
+Item::Item(const string n, const string des,  const double w) {
 	name = n;
 	description = des;
 	weight = w;
