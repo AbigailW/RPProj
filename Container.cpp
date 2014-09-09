@@ -23,10 +23,12 @@ void Container::addItem(Item i) {
 }
 
 Item * Container::searchContainer(string name) {
-	for (const auto i : items) {
-		if (i.getName() == name) {
-			return &i;
+	std::vector<Item>::iterator it = items.begin();
+	for (int x = 0; x < items.size(); x++) {
+		if (it->getName() == name) {
+			return &(*it);
 		}
+		it++;
 	}
 	return NULL;
 }
