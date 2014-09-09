@@ -8,7 +8,6 @@
 #include <functional> // hash
 #include "Character.h"
 #include "Helper.h"
-#include "Armor.h"
 
 using namespace std;
 
