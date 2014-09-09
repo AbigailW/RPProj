@@ -72,10 +72,8 @@ Armor::Armor(const Weight aw, const int ACinp, const int str, const Stealth ste,
 }
 
 void Armor::printArmor(const vector<Armor>& container) {
-	vector<Armor>::const_iterator it = container.begin();
-	for (int x = 0; x < container.size(); x++) {
-		cout << it->getName() << endl;
-		it++;
+	for (const auto i : container) {
+		cout << i.getName() << endl;
 	}
 }
 
