@@ -7,6 +7,7 @@
 #include "Item.h"
 #include "Container.h"
 
+using namespace std;
 
 void Container::setName(const string nameInp) {
 	name = nameInp;

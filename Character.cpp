@@ -10,6 +10,8 @@
 #include "Helper.h"
 #include "Armor.h"
 
+using namespace std;
+
 #define numAbil 6
 
 Character::Character() { //UNTESTED

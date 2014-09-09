@@ -12,12 +12,12 @@ class Container {
 		Container() : Container("") {}
 		Container(std::string const& nameInp) : weight(0), name(nameInp) {}
 		
-		void setName(string);
-		string getName() const;
+		void setName(std::string);
+		std::string getName() const;
 		void addItem(Item);
 		bool removeItem(Item);
 		bool moveItem(Item, Container *);
-		Item * searchContainer(string);
+		Item * searchContainer(std::string);
 		
 		void printContainer() const;
 	private:

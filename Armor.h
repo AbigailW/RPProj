@@ -3,14 +3,12 @@
 #include "Item.h"
 #include "DataTypes.h"
 
-using namespace std;
-
 class Armor: public Item {
 	public:
 		Armor();
-		Armor(Weight, int ACinp, int str, Stealth, string n, string des,
-			  string loc, double w);
-		Armor(string nam): Item(nam) {
+		Armor(Weight, int ACinp, int str, Stealth, std::string n, std::string des,
+			  std::string loc, double w);
+		Armor(std::string nam): Item(nam) {
 			name = nam;
 			description = "Tested shit";
 			location = "In a place";
@@ -20,8 +18,8 @@ class Armor: public Item {
 			armorStealth = none;
 			strReq = 9001;
 		}
-		string printArmorWeight(bool cap = false) const;
-		string printStealth(bool cap = false) const;
+		std::string printArmorWeight(bool cap = false) const;
+		std::string printStealth(bool cap = false) const;
 		void printInfo() const;
 	private:
 		Weight armorWeight;

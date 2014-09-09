@@ -5,8 +5,6 @@
 #include "Container.h"
 #include "DataTypes.h"
 
-using namespace std;
-
 class Character {
 	//single word pre-determined strings that can
 	//be represented with a struct
@@ -30,9 +28,9 @@ class Character {
 		int initiative;
 		int speed;
 		int hitDie, hp;
-		string name;
-		string deity;
-		string size;
+		std::string name;
+		std::string deity;
+		std::string size;
 		int height, weight, age;
 		int spellslots, cantrips, spellsknown;
 
@@ -44,21 +42,21 @@ class Character {
 
 	public:
 		Character();
-		Character(string name);
+		Character(std::string name);
 
 		void setAlign(Align);
 		Class getClass() const;
 		Race getRace() const;
 		Align getAlign() const;
 		int getHitDie() const;
-		string getName() const;
-		string getAbility(int) const;
+		std::string getName() const;
+		std::string getAbility(int) const;
 		void setAbilities();
 		void printAbilities() const;
 		void printCharacter() const;
-		string printRace(bool cap = false) const;
-		string printClass(bool cap = false) const;
-		string printAlign(bool cap = false) const;
+		std::string printRace(bool cap = false) const;
+		std::string printClass(bool cap = false) const;
+		std::string printAlign(bool cap = false) const;
 		void calcMods();
 		void selRace();
 		void selClass();
@@ -66,8 +64,8 @@ class Character {
 		void selName();
 		Container backpack = Container("Backpack");
 		Container equipped = Container("Equipped");
-		static void printArmor(const vector<Armor>&); // Should this be in Character?
-		static void printCharNames(const vector<Character>&);
+		static void printArmor(const std::vector<Armor>&); // Should this be in Character?
+		static void printCharNames(const std::vector<Character>&);
 };
 
 //STUBBED FOR COMPILING PURPOSES//

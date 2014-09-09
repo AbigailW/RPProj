@@ -1,22 +1,20 @@
 #ifndef ITEM_H
 #define ITEM_H
 
-using namespace std;
-
 class Item {
 	public:
 		Item();
-		Item(string nam);
-		Item(string n, string des, string loc, double w);
+		Item(std::string nam);
+		Item(std::string n, std::string des, std::string loc, double w);
 		int getWeight() const;
-		string getName() const;
-		string getDescription() const;
-		void editDescription(string);
-		void editLocation(string);
+		std::string getName() const;
+		std::string getDescription() const;
+		void editDescription(std::string);
+		void editLocation(std::string);
 		void printInfo() const;
 	protected:
 		double weight;
-		string name, description, location;
+		std::string name, description, location;
 };
 
 #endif
