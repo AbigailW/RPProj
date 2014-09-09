@@ -39,3 +39,112 @@ void Character::calcMods() { //this is beautiful. do not touch.
 		temp1[x] = -5 + (temp2[x] / 2);
 	}
 }
+
+
+
+
+
+
+
+
+
+		cout << endl << "1. Create a character " << endl << "2. Create an item " << endl
+			 << "3. See character list " << endl << "4. See item list " << endl
+			 << "5. Add items to character " << endl << "6. View Character" << endl
+			 << "7. Equip items" << endl << "8. Quit " << endl;
+		choice = getNum(1, 8);
+		switch (choice) {
+			case 1: { // Create a character
+				Character temp = Character();
+				temp.printCharacter();
+				thisGame.charList.push_back(temp);
+				break;
+			}
+			case 2: { // Create an item
+				//which kind of item?
+				Armor temp = Armor();
+				temp.printInfo();
+				thisGame.armorList.push_back(temp);
+				break;
+			}
+			case 3: // List characters
+				cout << endl << "---Characters---" << endl;
+				Character::printCharNames(thisGame.charList);
+				break;
+			case 4: // List items
+				for (int i = 0; i < thisGame.armorList.size(); i++) {
+					thisGame.armorList[i].printInfo();
+					cout << endl;
+				}
+				break;     
+			case 5: { // Add items to character bag
+				string tempNam, tempItem;
+				cout << endl << "---Character List---" << endl;
+				Character::printCharNames(thisGame.charList);
+				cout << "Which character?" << endl;
+				getline(cin, tempNam);
+				if (thisGame.getCharacter(tempNam)) {
+					cout << endl << "---Item List---" << endl;
+					Armor::printArmor(thisGame.armorList);
+					cout << endl << "Which item?" << endl;
+					getline(cin, tempItem);
+					if (thisGame.getItem(tempItem)) {
+						thisGame.getCharacter(tempNam)->backpack.addItem(*thisGame.getItem(tempItem));
+						cout << "Added to " << thisGame.getCharacter(tempNam)->getName() << "'s "
+							<< thisGame.getCharacter(tempNam)->backpack.getName() << endl;
+					} else {
+						cout << "No such item." << endl;
+					}
+				} else {
+					cout << "Didn't find a character named " << tempNam << endl;
+				}
+				break;
+			}
+			case 6: { // Display character
+				string charInp;
+				cout << endl << "---Characters---" << endl;
+				Character::printCharNames(thisGame.charList);
+				cout << endl << "Which character would you like to view?" << endl;
+				getline(cin, charInp);
+				Character * tempChar = thisGame.getCharacter(charInp);
+				if (tempChar) {
+					tempChar->printCharacter();
+				} else {
+					cout << "Didn't find a character named " << charInp << endl;
+				}
+				break;
+			}
+			case 7: { // Equip an item
+				string charInp, itemInp;
+				cout << endl << "---Characters---" << endl;
+				Character::printCharNames(thisGame.charList);
+				cout << endl << "Which character would you like to equip items on?" << endl;
+				getline(cin, charInp);
+				Character * tempChar = thisGame.getCharacter(charInp);
+				if (tempChar) {
+					cout << endl << "Currently in " << tempChar->getName() << "'s ";
+					tempChar->backpack.printContainer();
+					cout << endl << "Which item?" << endl;
+					getline(cin, itemInp);
+					Item * tempItem = tempChar->backpack.searchContainer(itemInp);
+					if (tempItem) {
+						if (tempChar->backpack.moveItem(*tempItem, &(tempChar->equipped))) {
+							cout << "Equipped!" << endl;
+						} else {
+							cout << "Not equipped!" << endl;
+						}
+					} else {
+						cout << "No such item in " << tempChar->getName() << "'s bag." << endl;
+					}
+				} else {
+					cout << "Didn't find a character named " << charInp << endl;
+				}
+				break;
+			}
+			case 8: // Exit
+				go = false;
+				break;
+			default: // Wtf?
+				cout << "How did you get here?!?";
+				break;
+		}

@@ -23,7 +23,7 @@ Container.o: Container.cpp Item.h Container.h
 
 Campaign.h: Character.h Armor.h
 
-Campaign.o: Campaign.cpp Campaign.h Armor.h Character.h
+Campaign.o: Campaign.cpp Campaign.h Character.h Armor.h Helper.h Item.h Container.h
 	${CC} ${CFLAGS} -c Campaign.cpp
 
 Character.h: Item.h Container.h DataTypes.h
