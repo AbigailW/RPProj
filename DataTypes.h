@@ -15,6 +15,10 @@ enum Align {
 	ChaoticNeutral, LawfulGood, LawfulEvil, LawfulNeutral
 };
 
+struct Abilities {
+	int str, dex, con, intl, wis, cha;
+};
+
 enum AbilTypes {
 	str, dex, con, intl, wis, cha
 };
