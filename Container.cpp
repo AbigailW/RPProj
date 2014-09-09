@@ -48,7 +48,8 @@ bool Container::removeItem(Item i) {
 bool Container::moveItem(Item i, Container* b) {
 	std::vector<Item>::iterator it = items.begin();
 	for (int x = 0; x < items.size(); x++) {
-		if (it->getName() == i.getName()) {
+		//if (it->getName() == i.getName()) {
+		if (*it == i) {
 			b->addItem(i);
 			items.erase(it);
 			return true;
@@ -61,9 +62,9 @@ bool Container::moveItem(Item i, Container* b) {
 void Container::printContainer() const {
 	if (items.size() < 1) {
 		if (name == "") {
-			std::cout << "Nothing in the container." << endl;
+			std::cout << std::endl << "Nothing in the container." << endl;
 		} else {
-			std::cout << "No items in " << name << "." << endl;
+			std::cout << std::endl << "No items in " << name << "." << endl;
 		}
 		return;
 	}
