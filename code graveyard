@@ -31,3 +31,11 @@ for (int x = 0; x < thisGame.charList.size(); x++) { //make sure character exist
 if (!added) {
 	cout << "Could not find " << tempCha << endl;
 }
+
+void Character::calcMods() { //this is beautiful. do not touch.
+	int * temp1 = &(mods.str);
+	int * temp2 = &(charAbils.str);
+	for (int x = 0; x < numAbil; x++) {
+		temp1[x] = -5 + (temp2[x] / 2);
+	}
+}

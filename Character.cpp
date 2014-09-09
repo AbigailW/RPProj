@@ -390,16 +390,6 @@ void Character::printCharacter() const {
 	equipped.printContainer();
 }
 
-/*
-void Character::calcMods() { //this is beautiful. do not touch.
-	int * temp1 = &(mods.str);
-	int * temp2 = &(charAbils.str);
-	for (int x = 0; x < numAbil; x++) {
-		temp1[x] = -5 + (temp2[x] / 2);
-	}
-}
-*/
-
 void Character::calcMods() { //this is beautiful. do not touch. Sorry -Berk
 	for (int x = 0; x < numAbil; x++) {
 		((int *) &mods.str)[x] = (((int *) &charAbils.str)[x] / 2) - 5;
