@@ -90,3 +90,27 @@ bool Item::removeBonus(const AbilBonus& checkAbil) {
 	}
 	return false;
 }
+
+bool Item::operator==(const Item& oth) const {
+	if (this->weight == oth.weight
+		&& this->name == oth.name
+		&& this->description == oth.description
+		&& this->location == oth.location)
+	{
+		int found = 0;
+		vector<AbilBonus>::const_iterator it = this->bonuses.begin();
+		vector<AbilBonus>::const_iterator it2;
+		for (int i = 0; i < this->bonuses.size(); i++) {
+			it2 = oth.bonuses.begin();
+			for (int j = 0; j < oth.bonuses.size(); j++) {
+				if (!eqAbilBonus(*it, *it2)) {
+					found++;
+				}
+				it2++;
+			}
+			it++;
+		}
+		return (found == this->bonuses.size()); // Doesn't handle duplicates
+	}
+	return false;
+}
