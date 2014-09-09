@@ -15,16 +15,20 @@ enum Align {
 	ChaoticNeutral, LawfulGood, LawfulEvil, LawfulNeutral
 };
 
-struct Abilities {
-	int str, dex, con, intl, wis, cha;
-};
-
-struct AbilMods {
-	int str, dex, con, intl, wis, cha;
+enum AbilTypes {
+	str, dex, con, intl, wis, cha
 };
 
 enum DivineDomain {
 	Knowledge, Life, Light, Nature, Tempest, Trickery, War
+};
+
+// Item
+struct AbilBonus {
+	AbilTypes abil;
+	int bonus;
+	std::string name;
+	std::string desc;
 };
 
 // Armor

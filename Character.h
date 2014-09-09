@@ -5,6 +5,10 @@
 #include "Container.h"
 #include "DataTypes.h"
 
+struct Abilities {
+	int str, dex, con, intl, wis, cha;
+};
+
 class Character {
 	//single word pre-determined strings that can
 	//be represented with a struct
@@ -13,7 +17,7 @@ class Character {
 		Race charRace;
 		Align charAlign;
 		Abilities charAbils;
-		AbilMods mods;
+		Abilities mods;
 		DivineDomain domain;
 
 		//these two are an array of these stats in this order.

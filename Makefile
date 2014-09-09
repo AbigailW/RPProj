@@ -31,9 +31,12 @@ Character.h: Item.h Armor.h Container.h DataTypes.h
 Character.o: Character.cpp Character.h Helper.h Armor.h
 	${CC} ${CFLAGS} -c Character.cpp
 
+Helper.h: DataTypes.h
+
 Helper.o: Helper.cpp Helper.h
 	${CC} ${CFLAGS} -c Helper.cpp
 
+Item.h: DataTypes.h
 Item.o: Item.cpp Item.h Helper.h
 	${CC} ${CFLAGS} -c Item.cpp
 

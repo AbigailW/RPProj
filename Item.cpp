@@ -56,3 +56,37 @@ int Item::getWeight() const {
 string Item::getName() const {
 	return name;
 }
+
+int Item::getBonus(const AbilTypes& checkAbil) const {
+	vector<AbilBonus>::const_iterator it = bonuses.begin();
+	int sum = 0;
+	for (int i = 0; i < bonuses.size(); i++) {
+		if (it->abil == checkAbil) {
+			sum += it->bonus;
+		}
+		it++;
+	}
+	return sum;
+}
+
+void Item::addBonus(const AbilBonus newAbilBonus) {
+	bonuses.push_back(newAbilBonus);
+}
+
+void Item::addBonus(const AbilTypes& at, const int& bon, const string& nam,
+					const string& desc) {
+	AbilBonus ab = {at, bon, nam, desc};
+	bonuses.push_back(ab);
+}
+
+bool Item::removeBonus(const AbilBonus& checkAbil) {
+	vector<AbilBonus>::iterator it = bonuses.begin();
+	for (int i = 0; i < bonuses.size(); i++) {
+		if (eqAbilBonus(*it, checkAbil)) {
+			bonuses.erase(it);
+			return true;
+		}
+		it++;
+	}
+	return false;
+}
