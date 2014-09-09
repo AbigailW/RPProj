@@ -64,7 +64,6 @@ Armor::Armor(const Weight aw, const int ACinp, const int str, const Stealth ste,
 			 const double w) {
 	name = n;
 	description = des;
-	location = loc;
 	weight = w;
 	armorWeight = aw;
 	AC = ACinp;

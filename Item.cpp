@@ -14,14 +14,9 @@ void Item::editDescription(const string s) {
 	description = s;
 }
 
-void Item::editLocation(const string s) {
-	location = s;
-}
-
 void Item::printInfo() const {
 	cout << name << endl << description << endl
-		 << weight << " lbs" << endl
-		 << "Location: " << location << endl;
+		 << weight << " lbs" << endl;
 }
 
 Item::Item() {
@@ -31,21 +26,17 @@ Item::Item() {
 	getline(cin,description);
 	cout << "Weight?" << endl;
 	weight = getNum<double>();
-	cout << "Location?" << endl;
-	getline(cin,location);
 }
 
 Item::Item(const string nam){
 	name = nam;
 	description = "tested shit";
 	weight = 2500;
-	location = "places unknown";
 }
 
 Item::Item(const string n, const string des, const string loc, const double w) {
 	name = n;
 	description = des;
-	location = loc;
 	weight = w;
 }
 
@@ -94,8 +85,7 @@ bool Item::removeBonus(const AbilBonus& checkAbil) {
 bool Item::operator==(const Item& oth) const {
 	if (this->weight == oth.weight
 		&& this->name == oth.name
-		&& this->description == oth.description
-		&& this->location == oth.location)
+		&& this->description == oth.description)
 	{
 		int found = 0;
 		vector<AbilBonus>::const_iterator it = this->bonuses.begin();

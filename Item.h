@@ -13,7 +13,6 @@ class Item {
 		std::string getName() const;
 		std::string getDescription() const;
 		void editDescription(std::string);
-		void editLocation(std::string);
 		void printInfo() const;
 		void addBonus(const AbilBonus);
 		void addBonus(const AbilTypes& at, const int& bon,
@@ -23,7 +22,7 @@ class Item {
 		bool operator==(const Item&) const;
 	protected:
 		double weight;
-		std::string name, description, location;
+		std::string name, description;
 		std::vector<AbilBonus> bonuses;
 };
 

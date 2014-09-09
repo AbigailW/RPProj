@@ -11,7 +11,6 @@ class Armor: public Item {
 		Armor(std::string nam): Item(nam) {
 			name = nam;
 			description = "Tested shit";
-			location = "In a place";
 			weight = 1000;
 			armorWeight = shield;
 			AC = 42;
