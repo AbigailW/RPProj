@@ -23,12 +23,10 @@ void Container::addItem(Item i) {
 }
 
 Item * Container::searchContainer(string name) {
-	std::vector<Item>::iterator it = items.begin();
-	for (int x = 0; x < items.size(); x++) {
-		if (it->getName() == name) {
-			return &(*it);
+	for (const auto i : items) {
+		if (i.getName() == name) {
+			return &i;
 		}
-		it++;
 	}
 	return NULL;
 }
@@ -68,9 +66,7 @@ void Container::printContainer() const {
 		return;
 	}
 	std::cout << (name == "" ? "Contents" : name) << ":" << endl;
-	std::vector<Item>::const_iterator it = items.begin();
-	for (int x = 0; x < items.size(); x++) {
-		cout << it->getName() << endl;
-		it++;
+	for (const auto i : items) {
+		cout << i.getName() << endl;
 	}
 }
