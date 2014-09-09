@@ -17,6 +17,11 @@ void Item::editDescription(const string s) {
 void Item::printInfo() const {
 	cout << name << endl << description << endl
 		 << weight << " lbs" << endl;
+	if (bonuses.size() > 0) {
+		for (const auto i: bonuses) {
+			cout << "Bonus: " << (int) i.abil << " " << i.bonus << endl;
+		}
+	}
 }
 
 Item::Item() {
@@ -64,7 +69,7 @@ void Item::addBonus() {
 		<< "Which score does the bonus change?" << endl
 		<< "1. Str   2. Dex   3. Con" << endl
 		<< "4. Int   5. Wis   6. Cha" << endl;
-	newAbilBonus.abil = (AbilTypes) (getNum((int) str, (int) cha) - 1);
+	newAbilBonus.abil = (AbilTypes) (getNum(((int) str) + 1, ((int) cha) + 1) - 1);
 	cout << "Bonus amount: ";
 	newAbilBonus.bonus = getNum<int>();
 	bonuses.push_back(newAbilBonus);
