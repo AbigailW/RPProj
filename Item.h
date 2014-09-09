@@ -20,6 +20,7 @@ class Item {
 		bool removeBonus(const AbilBonus&);
 		int getBonus(const AbilTypes&) const;
 		bool operator==(const Item&) const;
+		bool operator!=(const Item&) const;
 	protected:
 		double weight;
 		std::string name, description;

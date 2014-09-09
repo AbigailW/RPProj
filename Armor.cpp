@@ -86,3 +86,7 @@ bool Armor::operator==(const Armor& oth) const {
 			&& this->AC == oth.AC
 			&& this->strReq == oth.strReq);
 }
+
+bool Armor::operator!=(const Armor& oth) const {
+	return !(*this == oth);
+}

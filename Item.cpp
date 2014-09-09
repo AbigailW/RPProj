@@ -28,13 +28,13 @@ Item::Item() {
 	weight = getNum<double>();
 }
 
-Item::Item(const string nam){
+Item::Item(const string nam) {
 	name = nam;
 	description = "tested shit";
 	weight = 2500;
 }
 
-Item::Item(const string n, const string des,  const double w) {
+Item::Item(const string n, const string des, const double w) {
 	name = n;
 	description = des;
 	weight = w;
@@ -103,4 +103,8 @@ bool Item::operator==(const Item& oth) const {
 		return (found == this->bonuses.size()); // Doesn't handle duplicates
 	}
 	return false;
+}
+
+bool Item::operator!=(const Item& oth) const {
+	return !(*this == oth);
 }
