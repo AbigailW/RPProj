@@ -111,8 +111,11 @@ int main() {
 					getline(cin, itemInp);
 					Item * tempItem = tempChar->backpack.searchContainer(itemInp);
 					if (tempItem) {
-						tempChar->equipped.moveItem(*tempItem, &(tempChar->equipped));
-						cout << "Equipped!" << endl;
+						if (tempChar->backpack.moveItem(*tempItem, &(tempChar->equipped))) {
+							cout << "Equipped!" << endl;
+						} else {
+							cout << "Not equipped!" << endl;
+						}
 					} else {
 						cout << "No such item in " << tempChar->getName() << "'s bag." << endl;
 					}
