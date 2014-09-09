@@ -49,13 +49,11 @@ string Item::getName() const {
 }
 
 int Item::getBonus(const AbilTypes& checkAbil) const {
-	vector<AbilBonus>::const_iterator it = bonuses.begin();
 	int sum = 0;
-	for (int i = 0; i < bonuses.size(); i++) {
-		if (it->abil == checkAbil) {
-			sum += it->bonus;
+	for (auto const it: bonuses) {
+		if (it.abil == checkAbil) {
+			sum += it.bonus;
 		}
-		it++;
 	}
 	return sum;
 }
@@ -99,17 +97,12 @@ bool Item::operator==(const Item& oth) const {
 		&& this->description == oth.description)
 	{
 		int found = 0;
-		vector<AbilBonus>::const_iterator it = this->bonuses.begin();
-		vector<AbilBonus>::const_iterator it2;
-		for (int i = 0; i < this->bonuses.size(); i++) {
-			it2 = oth.bonuses.begin();
-			for (int j = 0; j < oth.bonuses.size(); j++) {
-				if (!eqAbilBonus(*it, *it2)) {
+		for (const auto i : this->bonuses) {
+			for (const auto j : oth.bonuses) {
+				if (!eqAbilBonus(i, j)) {
 					found++;
 				}
-				it2++;
 			}
-			it++;
 		}
 		return (found == this->bonuses.size()); // Doesn't handle duplicates
 	}
