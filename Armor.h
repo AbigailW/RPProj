@@ -1,16 +1,9 @@
 #ifndef ARMOR_H
 #define ARMOR_H
 #include "Item.h"
+#include "DataTypes.h"
 
 using namespace std;
-
-enum Weight {
-	light, medium, heavy, shield
-};
-
-enum Stealth {
-	disadvantage, advantage, none
-};
 
 class Armor: public Item {
 	public:

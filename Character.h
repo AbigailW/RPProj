@@ -3,35 +3,9 @@
 #include "Item.h"
 #include "Armor.h"
 #include "Container.h"
+#include "DataTypes.h"
 
 using namespace std;
-
-enum Class {
-	cleric, fighter, rogue, wizard
-};
-
-enum Race {
-	dwarf, elf, halfling, human
-};
-
-enum Align {
-	NeutralGood, NeutralEvil, TrueNeutral, ChaoticGood, ChaoticEvil,
-	ChaoticNeutral, LawfulGood, LawfulEvil, LawfulNeutral
-};
-
-struct Abilities {
-	int str, dex, con, intl, wis, cha;
-};
-
-struct AbilMods {
-	int str, dex, con, intl, wis, cha;
-};
-
-
-enum DivineDomain {
-	Knowledge, Life, Light, Nature, Tempest, Trickery, War
-};
-
 
 class Character {
 	//single word pre-determined strings that can
