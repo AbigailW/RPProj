@@ -12,6 +12,5 @@ int rollDice(const int number, const int sides) {
 }
 
 bool eqAbilBonus(const AbilBonus& a1, const AbilBonus& a2) {
-	return (a1.abil == a2.abil && a1.bonus == a2.bonus && a1.name == a2.name
-			&& a1.desc == a2.desc);
+	return (a1.abil == a2.abil && a1.bonus == a2.bonus);
 }

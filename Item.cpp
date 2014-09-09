@@ -60,13 +60,24 @@ int Item::getBonus(const AbilTypes& checkAbil) const {
 	return sum;
 }
 
+void Item::addBonus() {
+	AbilBonus newAbilBonus;
+	cout << "New item bonus:" << endl
+		<< "Which score does the bonus change?" << endl
+		<< "1. Str   2. Dex   3. Con" << endl
+		<< "4. Int   5. Wis   6. Cha" << endl;
+	newAbilBonus.abil = (AbilTypes) (getNum((int) str, (int) cha) - 1);
+	cout << "Bonus amount: ";
+	newAbilBonus.bonus = getNum<int>();
+	bonuses.push_back(newAbilBonus);
+}
+
 void Item::addBonus(const AbilBonus newAbilBonus) {
 	bonuses.push_back(newAbilBonus);
 }
 
-void Item::addBonus(const AbilTypes& at, const int& bon, const string& nam,
-					const string& desc) {
-	AbilBonus ab = {at, bon, nam, desc};
+void Item::addBonus(const AbilTypes& at, const int& bon) {
+	AbilBonus ab = {at, bon};
 	bonuses.push_back(ab);
 }
 

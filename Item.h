@@ -14,9 +14,9 @@ class Item {
 		std::string getDescription() const;
 		void editDescription(std::string);
 		void printInfo() const;
+		void addBonus();
 		void addBonus(const AbilBonus);
-		void addBonus(const AbilTypes& at, const int& bon,
-					  const std::string& nam, const std::string& desc);
+		void addBonus(const AbilTypes& at, const int& bon);
 		bool removeBonus(const AbilBonus&);
 		int getBonus(const AbilTypes&) const;
 		bool operator==(const Item&) const;
