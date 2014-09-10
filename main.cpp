@@ -5,7 +5,6 @@
 #include <stdio.h>
 #include <cstdlib> 
 
-#include "Item.h"
 #include "Character.h"
 #include "Armor.h"
 #include "Helper.h"
@@ -15,7 +14,6 @@ using namespace std;
 
 int main() {
 	Campaign thisGame;
-
 	cout << "Loading character data" << endl;
 	thisGame.charList.push_back(Character("Bobby"));
 	thisGame.charList.push_back(Character("Jordan"));
@@ -35,8 +33,8 @@ int main() {
 			 << "1. Items" << endl
 			 << "2. Characters" << endl
 			 << "3. Quit" << endl;
-		cin >> choice;
-		switch(choice){
+		choice = getNum(1, 3);
+		switch (choice) {
 			case 1:
 				thisGame.itemMenu();
 				break;
@@ -49,7 +47,6 @@ int main() {
 			default:
 				cout << "Nope nope nope" << endl;
 				break;
-			
 		}
 	}
 	return 0;

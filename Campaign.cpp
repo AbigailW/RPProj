@@ -40,7 +40,7 @@ void Campaign::itemMenu() {
 	bool quit = false;
 	int choice = 0;
 	cout << "Item Menu!" << endl;
-	while(!quit){
+	while (!quit) {
 		cout << "1. Create an item" << endl
 			 << "2. View item list"  << endl
 			 << "3. View an item" << endl
@@ -91,8 +91,7 @@ void Campaign::itemMenu() {
 				quit = true;
 				break;
 			default:
-				cout << "Not an appropriate answer." << endl;
-				cout << endl;
+				cout << "Not an appropriate answer." << endl << endl;
 				break;
 		}
 	}
@@ -108,8 +107,8 @@ void Campaign::characterMenu() {
 			 << "3. View a character" << endl
 			 << "4. Modify a character" << endl
 			 << "5. Go back to main menu" << endl;
-		choice = getNum(1,5);
-		switch(choice){
+		choice = getNum(1, 5);
+		switch (choice) {
 			case 1: //create a character
 				cout << endl;
 				charList.push_back(Character());
@@ -125,7 +124,7 @@ void Campaign::characterMenu() {
 				Character::printCharNames(charList);
 				string tempNam;
 				cout << "Which character would you like to see?" << endl;
-				cin >> tempNam;
+				getline(cin, tempNam);
 				cout << endl;
 				getCharacter(tempNam)->printCharacter();
 				cout << endl;
@@ -135,12 +134,12 @@ void Campaign::characterMenu() {
 				Character::printCharNames(charList);
 				string tempNam;
 				cout << "Which character would you like to modify?" << endl;
-				cin >> tempNam;
-				if(getCharacter(tempNam)){
+				getline(cin, tempNam);
+				if (getCharacter(tempNam)) {
 					charModMenu(getCharacter(tempNam));
-				}
-				else
+				} else {
 					cout << "Not a valid character name" << endl;
+				}
 				cout << endl;
 				break;
 			}
@@ -153,7 +152,6 @@ void Campaign::characterMenu() {
 				break;
 		}
 	}
-	
 }
 
 void Campaign::charModMenu(Character *t){
@@ -161,15 +159,15 @@ void Campaign::charModMenu(Character *t){
 	int choice;
 	
 	while (!quit) {
-		 cout << endl << "Menu for " << t->getName() << endl
-		 << "1. View full character" << endl
-		 << "2. Add item to backpack" << endl
-		 << "3. Equip from backpack" << endl
-		 << "4. Remove equipped" << endl
-		 << "5. Remove from backpack" << endl
-		 << "6. Go back to character menu" << endl;
-		choice = getNum(1,6);
-		switch(choice){
+		cout << endl << "Menu for " << t->getName() << endl
+			<< "1. View full character" << endl
+			<< "2. Add item to backpack" << endl
+			<< "3. Equip from backpack" << endl
+			<< "4. Remove equipped" << endl
+			<< "5. Remove from backpack" << endl
+			<< "6. Go back to character menu" << endl;
+		choice = getNum(1, 6);
+		switch (choice) {
 			case 1: //print character
 				t->printCharacter();
 				cout << endl;
@@ -179,12 +177,12 @@ void Campaign::charModMenu(Character *t){
 				cout << "Which item?" << endl;
 				string tempNam;
 				getline(cin, tempNam);
-				if(getItem(tempNam)){
+				if (getItem(tempNam)) {
 					t->backpack.addItem(*getItem(tempNam));
 					cout << "Acquired!" << endl;
-				}
-				else
+				} else {
 					cout << "Not a valid item." << endl;
+				}
 				cout << endl;
 				break;
 			}
@@ -208,7 +206,7 @@ void Campaign::charModMenu(Character *t){
 				cout << endl;
 				break;
 			}
-			case 4: {//remove from equipped to backpack
+			case 4: { //remove from equipped to backpack
 				//does not actually remove
 				t->equipped.printContainer();
 				cout << "Which do you want to unequip?" << endl;
@@ -253,10 +251,3 @@ void Campaign::charModMenu(Character *t){
 		}
 	}
 }
-
-
-
-
-
-
-
