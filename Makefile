@@ -44,7 +44,7 @@ Item.h: DataTypes.h
 Item.o: Item.cpp Item.h Helper.h
 	${CC} ${CFLAGS} -c Item.cpp
 
-main.o: main.cpp Item.h Character.h Armor.h Helper.h Campaign.h
+main.o: main.cpp Character.h Armor.h Helper.h Campaign.h
 	${CC} ${CFLAGS} -c main.cpp
 
 ${TARGET}: ${OBJECTS}
