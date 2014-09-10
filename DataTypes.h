@@ -17,6 +17,8 @@ enum Align {
 
 struct Abilities {
 	int str, dex, con, intl, wis, cha;
+	bool operator==(const Abilities&) const;
+	bool operator!=(const Abilities&) const;
 };
 
 enum AbilTypes {
