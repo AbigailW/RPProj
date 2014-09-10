@@ -87,7 +87,7 @@ void Item::addBonus(const AbilTypes& at, const int& bon) {
 bool Item::removeBonus(const AbilBonus& checkAbil) {
 	vector<AbilBonus>::iterator it = bonuses.begin();
 	for (int i = 0; i < bonuses.size(); i++) {
-		if (eqAbilBonus(*it, checkAbil)) {
+		if (*it == checkAbil) { //eqAbilBonus
 			bonuses.erase(it);
 			return true;
 		}
@@ -104,7 +104,7 @@ bool Item::operator==(const Item& oth) const {
 		int found = 0;
 		for (const auto i : this->bonuses) {
 			for (const auto j : oth.bonuses) {
-				if (!eqAbilBonus(i, j)) {
+				if (i == j) { //eqAbilBonus
 					found++;
 				}
 			}

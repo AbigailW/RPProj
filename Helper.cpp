@@ -10,7 +10,3 @@ int rollDice(const int number, const int sides) {
 	std::uniform_int_distribution<int> uniform_dist(1, sides);
 	return uniform_dist(e1);
 }
-
-bool eqAbilBonus(const AbilBonus& a1, const AbilBonus& a2) {
-	return (a1.abil == a2.abil && a1.bonus == a2.bonus);
-}

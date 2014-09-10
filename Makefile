@@ -2,7 +2,7 @@
 CC = clang++
 CFLAGS = -Wall -std=c++11
 LDFLAGS = -lrt
-OBJECTS = main.o Armor.o Container.o Campaign.o Character.o Helper.o Item.o
+OBJECTS = main.o Armor.o Container.o Campaign.o Character.o Helper.o Item.o DataTypes.o
 #replace this if you want to change the output name
 TARGET = test.out
 
@@ -30,6 +30,9 @@ Character.h: Item.h Container.h DataTypes.h
 
 Character.o: Character.cpp Character.h Helper.h
 	${CC} ${CFLAGS} -c Character.cpp
+
+DataTypes.o: DataTypes.cpp DataTypes.h
+	${CC} ${CFLAGS} -c DataTypes.cpp
 
 Helper.h: DataTypes.h
 

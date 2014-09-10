@@ -31,6 +31,9 @@ enum DivineDomain {
 struct AbilBonus {
 	AbilTypes abil;
 	int bonus;
+
+	bool operator==(const AbilBonus&) const;
+	bool operator!=(const AbilBonus&) const;
 };
 
 // Armor

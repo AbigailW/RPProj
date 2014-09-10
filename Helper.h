@@ -66,6 +66,4 @@ template<typename Type> Type getNum(
 	return tempVal;
 }
 
-bool eqAbilBonus(const AbilBonus& a1, const AbilBonus& a2);
-
 #endif
