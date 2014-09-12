@@ -6,21 +6,22 @@
 
 class Container {
 	public:
-		int weight;
-		std::vector <Item> items;
-		
+		// Constructors
 		Container() : Container("") {}
 		Container(std::string const& nameInp) : weight(0), name(nameInp) {}
-		
-		void setName(std::string);
+		// Operators
+		// Functions
+		void printContainer() const;
+		Item * searchContainer(std::string);
 		std::string getName() const;
+		void setName(std::string);
 		void addItem(Item);
 		bool removeItem(Item);
 		bool moveItem(Item, Container *);
-		Item * searchContainer(std::string);
-		
-		void printContainer() const;
+		// Data
+		std::vector <Item> items;
 	private:
 		std::string name;
+		int weight;
 };
 #endif

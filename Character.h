@@ -5,8 +5,27 @@
 #include "DataTypes.h"
 
 class Character {
-	//single word pre-determined strings that can
-	//be represented with a struct
+	public:
+		// Constructors
+		Character();
+		Character(std::string name);
+		// Functions
+		Align getAlign() const;
+		void selAlign();
+		void setAlign(Align);
+		Class getClass() const;
+		void selClass();
+		Race getRace() const;
+		void selRace();
+		std::string getName() const;
+		void selName();
+		int getHitDie() const;
+		int getStat(AbilTypes) const;
+		void printCharacter() const;
+		static void printCharNames(const std::vector<Character>&);
+		// Data
+		Container backpack = Container("Backpack");
+		Container equipped = Container("Equipped");
 	private:
 		Class charClass;
 		Race charRace;
@@ -33,35 +52,15 @@ class Character {
 		int height, weight, age;
 		int spellslots, cantrips, spellsknown;
 
-		void setClass(Class); //Sets the class of the character and hit die
-		void setRace(Race); //Adds bonuses to stats based on race, sets speed, height weight age etc.
+		void setClass(Class); // Sets the class of the character and hit die
+		void setRace(Race); // Adds bonuses to stats based on race, sets speed, height weight age etc.
 		
+		void calcMods();
+		void setAbilities();
 		void genAbilities(int*) const;
 		void setAbilitiesHelper(const int *);
-
-	public:
-		Character();
-		Character(std::string name);
-
-		void setAlign(Align);
-		Class getClass() const;
-		Race getRace() const;
-		Align getAlign() const;
-		int getHitDie() const;
-		std::string getName() const;
-		std::string getAbility(int) const;
-		void setAbilities();
 		void printAbilities() const;
-		void printCharacter() const;
-		void calcMods();
-		void selRace();
-		void selClass();
-		void selAlign();
-		void selName();
-		Container backpack = Container("Backpack");
-		Container equipped = Container("Equipped");
-		static void printCharNames(const std::vector<Character>&);
-		int getStat(AbilTypes) const;
+		std::string getAbility(int) const; // Remove?
 };
 
 //STUBBED FOR COMPILING PURPOSES//

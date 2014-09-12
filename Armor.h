@@ -5,6 +5,7 @@
 
 class Armor: public Item {
 	public:
+		// Constructors
 		Armor();
 		Armor(Weight, int ACinp, int str, Stealth, std::string n, std::string des,
 			  std::string loc, double w);
@@ -17,10 +18,12 @@ class Armor: public Item {
 			armorStealth = none;
 			strReq = 9001;
 		}
-		static void printArmor(const std::vector<Armor>&);
-		void printInfo() const;
+		// Operators
 		bool operator==(const Armor&) const;
 		bool operator!=(const Armor&) const;
+		// Functions
+		void printInfo() const;
+		static void printArmor(const std::vector<Armor>&);
 	private:
 		Weight armorWeight;
 		Stealth armorStealth;

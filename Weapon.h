@@ -7,6 +7,7 @@
 
 class Weapon: public Item {
 	public:
+		// Constructors
 		Weapon();
 		Weapon(int handReq, int range, int profBon, weapGroup,
 			   std::pair<int,int>damage);
@@ -22,10 +23,11 @@ class Weapon: public Item {
 			damage.first = 1;
 			damage.second = 6;
 		}
-
-		void printInfo() const;
+		// Operators
 		bool operator==(const Weapon&) const;
 		bool operator!=(const Weapon&) const;
+		// Functions
+		void printInfo() const;
 	private:
 		int handReq;
 		int range;

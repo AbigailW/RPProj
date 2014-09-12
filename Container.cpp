@@ -9,17 +9,19 @@
 
 using namespace std;
 
-void Container::setName(const string nameInp) {
-	name = nameInp;
-}
-
-string Container::getName() const {
-	return name;
-}
-
-void Container::addItem(Item i) {
-	items.push_back(i);
-	weight += i.getWeight();
+void Container::printContainer() const {
+	if (items.size() < 1) {
+		if (name == "") {
+			std::cout << std::endl << "Nothing in the container." << endl;
+		} else {
+			std::cout << std::endl << "No items in " << name << "." << endl;
+		}
+		return;
+	}
+	std::cout << (name == "" ? "Contents" : name) << ":" << endl;
+	for (const auto i : items) {
+		cout << i.getName() << endl;
+	}
 }
 
 Item * Container::searchContainer(string name) {
@@ -31,6 +33,19 @@ Item * Container::searchContainer(string name) {
 		it++;
 	}
 	return NULL;
+}
+
+string Container::getName() const {
+	return name;
+}
+
+void Container::setName(const string nameInp) {
+	name = nameInp;
+}
+
+void Container::addItem(Item i) {
+	items.push_back(i);
+	weight += i.getWeight();
 }
 
 bool Container::removeItem(Item i) {
@@ -56,19 +71,4 @@ bool Container::moveItem(Item i, Container* b) {
 		it++;
 	}
 	return false;
-}
-
-void Container::printContainer() const {
-	if (items.size() < 1) {
-		if (name == "") {
-			std::cout << std::endl << "Nothing in the container." << endl;
-		} else {
-			std::cout << std::endl << "No items in " << name << "." << endl;
-		}
-		return;
-	}
-	std::cout << (name == "" ? "Contents" : name) << ":" << endl;
-	for (const auto i : items) {
-		cout << i.getName() << endl;
-	}
 }

@@ -6,24 +6,6 @@
 
 using namespace std;
 
-string Item::getDescription() const {
-	return description;
-}
-
-void Item::editDescription(const string s) {
-	description = s;
-}
-
-void Item::printInfo() const {
-	cout << name << endl << description << endl
-		 << weight << " lbs" << endl;
-	if (bonuses.size() > 0) {
-		for (const auto i: bonuses) {
-			cout << "Bonus: " << (int) i.abil << " " << i.bonus << endl;
-		}
-	}
-}
-
 Item::Item() {
 	cout << "Name?" << endl;
 	getline(cin, name);
@@ -45,6 +27,38 @@ Item::Item(const string n, const string des, const double w) {
 	weight = w;
 }
 
+bool Item::operator==(const Item& oth) const {
+	if (this->weight == oth.weight
+		&& this->name == oth.name
+		&& this->description == oth.description)
+	{
+		int found = 0;
+		for (const auto i : this->bonuses) {
+			for (const auto j : oth.bonuses) {
+				if (i == j) {
+					found++;
+				}
+			}
+		}
+		return (found == this->bonuses.size()); // Doesn't handle duplicates
+	}
+	return false;
+}
+
+bool Item::operator!=(const Item& oth) const {
+	return !(*this == oth);
+}
+
+void Item::printInfo() const {
+	cout << name << endl << description << endl
+		 << weight << " lbs" << endl;
+	if (bonuses.size() > 0) {
+		for (const auto i: bonuses) {
+			cout << "Bonus: " << (int) i.abil << " " << i.bonus << endl;
+		}
+	}
+}
+
 int Item::getWeight() const {
 	return weight;
 }
@@ -53,14 +67,12 @@ string Item::getName() const {
 	return name;
 }
 
-int Item::getBonus(const AbilTypes& checkAbil) const {
-	int sum = 0;
-	for (auto const it: bonuses) {
-		if (it.abil == checkAbil) {
-			sum += it.bonus;
-		}
-	}
-	return sum;
+string Item::getDescription() const {
+	return description;
+}
+
+void Item::setDescription(const string s) {
+	description = s;
 }
 
 void Item::addBonus() {
@@ -96,24 +108,12 @@ bool Item::removeBonus(const AbilBonus& checkAbil) {
 	return false;
 }
 
-bool Item::operator==(const Item& oth) const {
-	if (this->weight == oth.weight
-		&& this->name == oth.name
-		&& this->description == oth.description)
-	{
-		int found = 0;
-		for (const auto i : this->bonuses) {
-			for (const auto j : oth.bonuses) {
-				if (i == j) { //eqAbilBonus
-					found++;
-				}
-			}
+int Item::getBonus(const AbilTypes& checkAbil) const {
+	int sum = 0;
+	for (auto const it: bonuses) {
+		if (it.abil == checkAbil) {
+			sum += it.bonus;
 		}
-		return (found == this->bonuses.size()); // Doesn't handle duplicates
 	}
-	return false;
-}
-
-bool Item::operator!=(const Item& oth) const {
-	return !(*this == oth);
+	return sum;
 }

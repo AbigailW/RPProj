@@ -13,7 +13,7 @@ using namespace std;
 
 #define numAbil 6
 
-Character::Character() { //UNTESTED
+Character::Character() {
 	//height, weight, age, speed, level, exp, initiative = 0;
 	//memset(stats, 0, sizeof(stats));
 	//memset(savingThrows, 0, sizeof(savingThrows));
@@ -38,7 +38,8 @@ Character::Character() { //UNTESTED
 	mods.wis = 0;
 	mods.cha = 0;
 	
-	AC = 0; speed = 0;
+	AC = 0;
+	speed = 0;
 
 	selName();
 	selAlign();
@@ -77,6 +78,30 @@ Character::Character(const string nam) {
 	speed = 0;
 }
 
+Align Character::getAlign() const {
+	return charAlign;
+}
+
+void Character::selAlign() {
+	cout << "Select a number corresponding with a alignment." << endl;
+	cout << "1. Neutral Good   2. Neutral Evil   3. True Neutral" << endl
+		  << "4. Chaotic Good   5. Chaotic Evil   6. Chaotic Neutral" << endl
+		  << "7. Lawful Good    8. Lawful Evil    9. Lawful Neutral" << endl
+		  << ": ";
+	charAlign = (Align) (getNum(((int) NeutralGood) + 1, ((int) LawfulNeutral) + 1) - 1);
+}
+
+Class Character::getClass() const {
+	return charClass;
+}
+
+void Character::selClass() {
+	cout << "Select a number corresponding with a class." << endl
+		  << "1. Cleric      2. Fighter\n"
+		  << "3. Rogue       4. Wizard\n: ";
+	setClass((Class) (getNum(((int) cleric) + 1, ((int) wizard) + 1) - 1));
+}
+
 void Character::setClass(const Class c) {
 	charClass = c;
 	switch (c) {
@@ -102,6 +127,17 @@ void Character::setClass(const Class c) {
 		cout << "Class not found; Hit Die set to 0" << endl;
 		break;
 	}
+}
+
+Race Character::getRace() const {
+	return charRace;
+}
+
+void Character::selRace() {
+	cout << "Select a number corresponding with a race." << endl
+		  << "1. Dwarf      2. Elf\n"
+		  << "3. Hafling    4. Human\n: ";
+	setRace((Race) (getNum(((int) dwarf) + 1, ((int) human) + 1) - 1));
 }
 
 void Character::setRace(const Race r) {
@@ -137,6 +173,51 @@ void Character::setRace(const Race r) {
 	}
 }
 
+string Character::getName() const {
+   return name;
+}
+
+void Character::selName() {
+	cout << "Character name: " << endl;
+	getline(cin, name);
+}
+
+int Character::getHitDie() const {
+	return hitDie;
+}
+
+int Character::getStat(const AbilTypes abil) const {
+	// Initialize the sum to the base value
+	int sum = ((int *) &charAbils.str)[(int) abil];
+
+	// If nothing is equipped we don't need to check
+	if (equipped.items.size() < 1) {
+		return sum;
+	}
+
+	// Add up all item bonuses that apply to the desired stat
+	for (auto const it : equipped.items) {
+		sum += it.getBonus(abil);
+	}
+	return sum;
+}
+
+void Character::calcMods() { //this is beautiful. do not touch. Sorry -Berk
+	for (int x = 0; x < numAbil; x++) {
+		((int *) &mods.str)[x] = (((int *) &charAbils.str)[x] / 2) - 5;
+	} // I touched it, sosume.
+}
+
+void Character::setAbilities() {
+	array<int, numAbil> tempScores {{0}};
+	genAbilities(tempScores.data());
+	// genAbilities returns a random order, sort largest to smallest
+	sort(begin(tempScores), end(tempScores));
+	reverse(begin(tempScores), end(tempScores));
+	// Assign the abilities to the desired slots
+	setAbilitiesHelper(tempScores.data());
+}
+
 void Character::genAbilities(int * tempScores) const {
 	int total, roll, smallest;
 	for (int i = 0; i < numAbil; i++) {
@@ -152,16 +233,6 @@ void Character::genAbilities(int * tempScores) const {
 		}
 		tempScores[i] = total - smallest;
 	}
-}
-
-void Character::setAbilities() {
-	array<int, numAbil> tempScores {{0}};
-	genAbilities(tempScores.data());
-	// genAbilities returns a random order, sort largest to smallest
-	sort(begin(tempScores), end(tempScores));
-	reverse(begin(tempScores), end(tempScores));
-	// Assign the abilities to the desired slots
-	setAbilitiesHelper(tempScores.data());
 }
 
 void Character::setAbilitiesHelper(const int * tempScores) {
@@ -249,26 +320,6 @@ void Character::setAbilitiesHelper(const int * tempScores) {
 	}
 }
 
-Class Character::getClass() const {
-	return charClass;
-}
-
-Race Character::getRace() const {
-	return charRace;
-}
-
-Align Character::getAlign() const {
-	return charAlign;
-}
-
-int Character::getHitDie() const {
-	return hitDie;
-}
-
-string Character::getName() const {
-   return name;
-}
-
 string Character::getAbility(const int num) const {
 	switch (num) {
 	case 0:
@@ -315,58 +366,8 @@ void Character::printCharacter() const {
 	equipped.printContainer();
 }
 
-void Character::calcMods() { //this is beautiful. do not touch. Sorry -Berk
-	for (int x = 0; x < numAbil; x++) {
-		((int *) &mods.str)[x] = (((int *) &charAbils.str)[x] / 2) - 5;
-	} // I touched it, sosume.
-}
-
-void Character::selRace() {
-	cout << "Select a number corresponding with a race." << endl
-		  << "1. Dwarf      2. Elf\n"
-		  << "3. Hafling    4. Human\n: ";
-	setRace((Race) (getNum(((int) dwarf) + 1, ((int) human) + 1) - 1));
-}
-
-void Character::selClass() {
-	cout << "Select a number corresponding with a class." << endl
-		  << "1. Cleric      2. Fighter\n"
-		  << "3. Rogue       4. Wizard\n: ";
-	setClass((Class) (getNum(((int) cleric) + 1, ((int) wizard) + 1) - 1));
-}
-
-void Character::selAlign() {
-	cout << "Select a number corresponding with a alignment." << endl;
-	cout << "1. Neutral Good   2. Neutral Evil   3. True Neutral" << endl
-		  << "4. Chaotic Good   5. Chaotic Evil   6. Chaotic Neutral" << endl
-		  << "7. Lawful Good    8. Lawful Evil    9. Lawful Neutral" << endl
-		  << ": ";
-	charAlign = (Align) (getNum(((int) NeutralGood) + 1, ((int) LawfulNeutral) + 1) - 1);
-}
-
-void Character::selName() {
-	cout << "Character name: " << endl;
-	getline(cin, name);
-}
-
 void Character::printCharNames(const vector<Character>& charList) {
 	for (auto const it: charList) {
 		cout << it.getName() << endl;
 	}
-}
-
-int Character::getStat(const AbilTypes abil) const {
-	// Initialize the sum to the base value
-	int sum = ((int *) &charAbils.str)[(int) abil];
-
-	// If nothing is equipped we don't need to check
-	if (equipped.items.size() < 1) {
-		return sum;
-	}
-
-	// Add up all item bonuses that apply to the desired stat
-	for (auto const it : equipped.items) {
-		sum += it.getBonus(abil);
-	}
-	return sum;
 }
