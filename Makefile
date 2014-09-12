@@ -20,7 +20,7 @@ Weapon.o: Weapon.cpp Weapon.h Item.h DataTypes.h
 
 Armor.h: Item.h DataTypes.h
 
-Armor.o: Armor.cpp Item.h Armor.h Helper.h
+Armor.o: Armor.cpp Item.h Armor.h Helper.h DataTypes.h
 	${CC} ${CFLAGS} -c Armor.cpp
 
 Container.h: Item.h

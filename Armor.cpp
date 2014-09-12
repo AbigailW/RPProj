@@ -7,44 +7,17 @@
 #include "Item.h"
 #include "Armor.h"
 #include "Helper.h"
+#include "DataTypes.h"
 
 using namespace std;
 
 void Armor::printInfo() const {
 	Item::printInfo();
-	cout << printArmorWeight(true) << " armor" << endl
-		 << "Stealth: " << printStealth() << endl
+	cout << printWeight(armorWeight, true) << " armor" << endl
+		 << "Stealth: " << printStealth(armorStealth) << endl
 		 << "AC: " << AC
 		 << "    Strength Requirement: " << strReq
 		 << endl;
-}
-
-string Armor::printArmorWeight(const bool cap) const {
-	switch (armorWeight) {
-	case light:
-		return (string) (cap ? "L" : "l") + "ight"; break;
-	case medium:
-		return (string) (cap ? "M" : "m") + "edium"; break;
-	case heavy:
-		return (string) (cap ? "H" : "h") + "eavy"; break;
-	case shield:
-		return (string) (cap ? "S" : "s") + "hield"; break;
-	default:
-		return "unknown"; break;
-	}
-}
-
-string Armor::printStealth(const bool cap) const {
-	switch (armorStealth) {
-	case disadvantage:
-		return (string) (cap ? "D" : "d") + "isadvantage"; break;
-	case advantage:
-		return (string) (cap ? "A" : "a") + "dvantage"; break;
-	case none:
-		return (string) (cap ? "N" : "n") + "one"; break;
-	default:
-		return "Unknown"; break;
-	}
 }
 
 Armor::Armor() {

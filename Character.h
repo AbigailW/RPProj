@@ -53,9 +53,6 @@ class Character {
 		void setAbilities();
 		void printAbilities() const;
 		void printCharacter() const;
-		std::string printRace(bool cap = false) const;
-		std::string printClass(bool cap = false) const;
-		std::string printAlign(bool cap = false) const;
 		void calcMods();
 		void selRace();
 		void selClass();

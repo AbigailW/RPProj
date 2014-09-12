@@ -17,8 +17,6 @@ class Armor: public Item {
 			armorStealth = none;
 			strReq = 9001;
 		}
-		std::string printArmorWeight(bool cap = false) const;
-		std::string printStealth(bool cap = false) const;
 		static void printArmor(const std::vector<Armor>&);
 		void printInfo() const;
 		bool operator==(const Armor&) const;

@@ -104,81 +104,6 @@ void Character::setClass(const Class c) {
 	}
 }
 
-string Character::printRace(const bool cap) const {
-	switch (charRace) {
-		case dwarf:
-			return (string) (cap ? "D" : "d") + "warf";
-			break;
-		case elf:
-			return (string) (cap ? "E" : "e") + "lf";
-			break;
-		case halfling:
-			return (string) (cap ? "H" : "h") + "afling";
-			break;
-		case human:
-			return (string) (cap ? "H" : "h") + "uman";
-			break;
-		default:
-			return "Unknown!";
-			break;
-	}
-}
-
-string Character::printClass(const bool cap) const {
-	switch (charClass) {
-		case cleric:
-			return (string) (cap ? "C" : "c") + "leric";
-			break;
-		case fighter:
-			return (string) (cap ? "F" : "f") + "ighter";
-			break;
-		case rogue:
-			return (string) (cap ? "R" : "r") + "ogue";
-			break;
-		case wizard:
-			return (string) (cap ? "W" : "w") + "izard";
-			break;
-		default:
-			return "Unknown!";
-			break;
-	}
-}
-
-string Character::printAlign(const bool cap) const {
-	switch (charAlign) {
-	case NeutralGood:
-		return (string) (cap ? "N" : "n") + "eutral " + (cap ? "G" : "g") + "ood";
-		break;
-	case NeutralEvil:
-		return (string) (cap ? "N" : "n") + "eutral " + (cap ? "E" : "e") + "vil";
-		break;
-	case TrueNeutral:
-		return (string) (cap ? "T" : "t") + "rue " + (cap ? "N" : "n") + "eutral";
-		break;
-	case ChaoticGood:
-		return (string) (cap ? "C" : "c") + "haotic " + (cap ? "G" : "g") + "ood";
-		break;
-	case ChaoticEvil:
-		return (string) (cap ? "C" : "c") + "haotic " + (cap ? "E" : "e") + "vil";
-		break;
-	case ChaoticNeutral:
-		return (string) (cap ? "C" : "c") + "haotic " + (cap ? "N" : "n") + "eutral";
-		break;
-	case LawfulGood:
-		return (string) (cap ? "L" : "l") + "awful " + (cap ? "G" : "g") + "ood";
-		break;
-	case LawfulEvil:
-		return (string) (cap ? "L" : "l") + "awful " + (cap ? "E" : "e") + "vil";
-		break;
-	case LawfulNeutral:
-		return (string) (cap ? "L" : "l") + "awful " + (cap ? "N" : "n") + "eutral";
-		break;
-	default:
-		return "Unknown!";
-		break;
-	}
-}
-
 void Character::setRace(const Race r) {
 	//What if we set height and weight ranges by height, and user input has to fall in that range?
 	charRace = r;
@@ -381,9 +306,9 @@ void Character::printAbilities() const {
 
 void Character::printCharacter() const {
 	cout << name << endl
-		  << "Race: " << printRace(true)
-		  << "		Class: " << printClass(true)
-		  << "		Alignment: " << printAlign(true) << endl;
+		  << "Race: " << printRace(charRace, true)
+		  << "		Class: " << printClass(charClass, true)
+		  << "		Alignment: " << printAlign(charAlign, true) << endl;
 	printAbilities();
 	cout << "AC: " << AC << "   Speed: " << speed << endl;
 	backpack.printContainer();
