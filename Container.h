@@ -8,7 +8,7 @@ class Container {
 	public:
 		// Constructors
 		Container() : Container("") {}
-		Container(std::string const& nameInp) : weight(0), name(nameInp) {}
+		Container(std::string const& nameInp) : name(nameInp), weight(0) {}
 		// Operators
 		// Functions
 		void printContainer() const;
