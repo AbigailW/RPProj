@@ -12,7 +12,7 @@ class Character {
 		// Functions
 		Align getAlign() const;
 		void selAlign();
-		void setAlign(Align);
+		void setAlign(const Align&);
 		Class getClass() const;
 		void selClass();
 		Race getRace() const;
@@ -52,15 +52,15 @@ class Character {
 		int height, weight, age;
 		int spellslots, cantrips, spellsknown;
 
-		void setClass(Class); // Sets the class of the character and hit die
-		void setRace(Race); // Adds bonuses to stats based on race, sets speed, height weight age etc.
+		void setClass(const Class); // Sets the class of the character and hit die
+		void setRace(const Race); // Adds bonuses to stats based on race, sets speed, height weight age etc.
 		
 		void calcMods();
 		void setAbilities();
 		void genAbilities(int*) const;
-		void setAbilitiesHelper(const int *);
+		void setAbilitiesHelper(const int*);
 		void printAbilities() const;
-		std::string getAbility(int) const; // Remove?
+		std::string getAbility(const int) const; // Remove?
 };
 
 //STUBBED FOR COMPILING PURPOSES//

@@ -91,6 +91,10 @@ void Character::selAlign() {
 	charAlign = (Align) (getNum(((int) NeutralGood) + 1, ((int) LawfulNeutral) + 1) - 1);
 }
 
+void Character::setAlign(const Align& a) {
+	charAlign = a;
+}
+
 Class Character::getClass() const {
 	return charClass;
 }
