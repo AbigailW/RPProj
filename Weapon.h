@@ -26,14 +26,13 @@ class Weapon: public Item {
 		void printInfo() const;
 		bool operator==(const Weapon&) const;
 		bool operator!=(const Weapon&) const;
-
 	private:
 		int handReq;
 		int range;
 		int profBon;
 		weapGroup group;
 		damType damT;
-		std::pair<int,int>damage;
+		std::pair<int,int> damage;
 };
 
 #endif
