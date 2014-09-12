@@ -1,13 +1,9 @@
 #include <iostream>
 #include <string>
-#include <stdio.h>
-#include <stdlib.h>
-#include <utility>
-#include <vector>
+#include <utility> // pair
 #include "Item.h"
-#include "Armor.h"
-#include "Helper.h"
 #include "Weapon.h"
+#include "DataTypes.h"
 
 using namespace std;
 

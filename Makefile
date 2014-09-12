@@ -5,7 +5,7 @@ LDFLAGS = -lrt
 OBJECTS = main.o Armor.o Container.o Campaign.o Character.o Helper.o Item.o \
 		  DataTypes.o Weapon.o
 
-# replace this if you want to change the output name
+# Replace this if you want to change the output name
 TARGET = test.out
 
 #default is to compile
@@ -15,7 +15,7 @@ compile: ${TARGET}
 
 Weapon.h: Item.h DataTypes.h
 
-Weapon.o: Weapon.cpp Item.h DataTypes.h
+Weapon.o: Weapon.cpp Weapon.h Item.h DataTypes.h
 	${CC} ${CFLAGS} -c Weapon.cpp
 
 Armor.h: Item.h DataTypes.h
