@@ -2,14 +2,21 @@
 CC = clang++
 CFLAGS = -Wall -std=c++11
 LDFLAGS = -lrt
-OBJECTS = main.o Armor.o Container.o Campaign.o Character.o Helper.o Item.o DataTypes.o
-#replace this if you want to change the output name
+OBJECTS = main.o Armor.o Container.o Campaign.o Character.o Helper.o Item.o \
+		  DataTypes.o Weapon.o
+
+# replace this if you want to change the output name
 TARGET = test.out
 
 #default is to compile
 default: compile
 
 compile: ${TARGET}
+
+Weapon.h: Item.h DataTypes.h
+
+Weapon.o: Weapon.cpp Item.h DataTypes.h
+	${CC} ${CFLAGS} -c Weapon.cpp
 
 Armor.h: Item.h DataTypes.h
 
@@ -23,7 +30,8 @@ Container.o: Container.cpp Item.h Container.h
 
 Campaign.h: Character.h Armor.h
 
-Campaign.o: Campaign.cpp Campaign.h Character.h Armor.h Helper.h Item.h Container.h
+Campaign.o: Campaign.cpp Campaign.h Character.h Armor.h Helper.h Item.h \
+			Container.h
 	${CC} ${CFLAGS} -c Campaign.cpp
 
 Character.h: Item.h Container.h DataTypes.h

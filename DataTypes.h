@@ -47,4 +47,13 @@ enum Stealth {
 	disadvantage, advantage, none
 };
 
+// Weapon
+enum weapGroup {
+	simpleMelee, simpleRanged, martialMelee, martialRanged
+};
+
+enum damType {
+	bludge, pierce, slash
+};
+
 #endif // DATATYPES_H
