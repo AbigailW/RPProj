@@ -84,15 +84,33 @@ void Item::addBonus() {
 	newAbilBonus.abil = (AbilTypes) (getNum(((int) str) + 1, ((int) cha) + 1) - 1);
 	cout << "Bonus amount: ";
 	newAbilBonus.bonus = getNum<int>();
+	for (auto const it: bonuses) {
+		if (it == newAbilBonus) {
+			cout << "Failed to add, bonus already exists!" << endl;
+			return;
+		}
+	}
 	bonuses.push_back(newAbilBonus);
 }
 
 void Item::addBonus(const AbilBonus newAbilBonus) {
+	for (auto const it: bonuses) {
+		if (it == newAbilBonus) {
+			cout << "Failed to add, bonus already exists!" << endl;
+			return;
+		}
+	}
 	bonuses.push_back(newAbilBonus);
 }
 
 void Item::addBonus(const AbilTypes& at, const int& bon) {
 	AbilBonus ab = {at, bon};
+	for (auto const it: bonuses) {
+		if (it == ab) {
+			cout << "Failed to add, bonus already exists!" << endl;
+			return;
+		}
+	}
 	bonuses.push_back(ab);
 }
 
