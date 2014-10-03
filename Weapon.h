@@ -10,7 +10,7 @@ class Weapon: public Item {
 		// Constructors
 		Weapon();
 		Weapon(int handReq, int range, int profBon, weapGroup,
-			   std::pair<int,int>damage);
+			   damType, int f, int s);
 		Weapon(std::string nam): Item(nam) {
 			name = nam;
 			description = "Testing weapon";

@@ -40,7 +40,7 @@ bool Item::operator==(const Item& oth) const {
 				}
 			}
 		}
-		return (found == this->bonuses.size()); // Doesn't handle duplicates
+		return (found == this->bonuses.size());
 	}
 	return false;
 }
@@ -117,7 +117,7 @@ void Item::addBonus(const AbilTypes& at, const int& bon) {
 bool Item::removeBonus(const AbilBonus& checkAbil) {
 	vector<AbilBonus>::iterator it = bonuses.begin();
 	for (int i = 0; i < bonuses.size(); i++) {
-		if (*it == checkAbil) { //eqAbilBonus
+		if (*it == checkAbil) {
 			bonuses.erase(it);
 			return true;
 		}

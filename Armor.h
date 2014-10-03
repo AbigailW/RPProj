@@ -24,6 +24,7 @@ class Armor: public Item {
 		// Functions
 		void printInfo() const;
 		static void printArmor(const std::vector<Armor>&);
+		Armor makeArmor();
 	private:
 		Weight armorWeight;
 		Stealth armorStealth;

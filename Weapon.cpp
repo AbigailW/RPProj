@@ -28,3 +28,36 @@ void Weapon::printInfo() const {
 		 << group << endl
 		 << damage.first << "d" << damage.second << endl;
 }
+
+Weapon::Weapon(int handR, int r, int profB, weapGroup wG, damType dT, int f, int s) {
+	handReq = handR;
+	range = r;
+	profBon = profB;
+	group = wG;
+	damage = make_pair(f,s);
+	damT = dT;
+}
+
+Weapon::Weapon(string nam) {
+	
+}
+
+Weapon::createWeapon() {
+	cout << endl << "Hand requirements?" << endl;
+	int handR = getNum();
+	cout << endl << "Range?" << endl;
+	int r = getNum();
+	cout << endl << "Proficiency Bonus?" << endl;
+	int profB = getNum();
+	cout << endl << "Group type?" << endl;
+	//make menu for weapon group
+	//damType
+	cout << endl << "Damage type?" << endl;
+	//make menu for damage type;
+
+	cout << endl << "For damage. How many dice?" << endl;
+	f = getNum();
+	cout << endl << "Sides on dice?" << endl;
+	s = getNum();
+	cout << endl;
+}

@@ -65,3 +65,19 @@ void Armor::printArmor(const vector<Armor>& container) {
 		cout << i.getName() << endl;
 	}
 }
+
+Armor Armor::makeArmor(){
+	cout << "Armor weight? 1 - light, 2 - medium, 3 - heavy, 4 - shield" << endl;
+	armorWeight = (Weight) (getNum(((int) light) + 1, ((int) shield) + 1) - 1);
+	cout << "Steal benefits? 1 - disadvantage, 2 - advantage, or 3 - none" << endl;
+	armorStealth = (Stealth) (getNum(((int) disadvantage) + 1, ((int) none) + 1) - 1);
+	cout << "Armor class?" << endl;
+	AC = getNum<int>();
+	cout << "Strength requirements?" << endl;
+	strReq = getNum<int>();
+	cout << endl;
+
+	Armor a = (armorWeight, AC, armorStealth);
+	return a;
+
+}
