@@ -16,6 +16,7 @@ class Campaign {
 		void itemMenu();
 		void characterMenu();
 		void charModMenu(Character *t);
+		void mountMenu();
 	private:
 		
 };

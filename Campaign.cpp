@@ -154,6 +154,21 @@ void Campaign::characterMenu() {
 	}
 }
 
+/*
+void Campaign::mountMenu() {
+	bool quit = false;
+	int choice;
+	while (quit != true) {
+		//will add more items later when I can think of them
+		cout << "Mount Menu" << endl
+		<< 1. Create Mount
+		<< 2. List Mounts
+		<< 3. View Mount
+		<< 4. Go back to main Menu
+	}
+}
+*/
+
 void Campaign::charModMenu(Character *t){
 	bool quit = false;
 	int choice;
